@@ -2,11 +2,13 @@
 ## 1.Project Overview
 This project presents the RTL design and ASIC implementation of a low-power, configurable multi-clock digital communication system using Verilog/System Verilog, targeting TSMC 130nm technology.
 
-The system receives commands UART RX, decodes and executes them using a system controller, and do some operations based on received command such as arithmetic, logical,shift,read and write file operations. The processed results are then transmitted back through a UART TX.
+The system receives  UART RX commands from master, decodes and executes them using a system controller, and do some operations based on received command such as arithmetic, logical, shift, read and write file operations. The processed results are then transmitted back through a UART TX to master.
+
+<img width="1224" height="787" alt="image" src="https://github.com/user-attachments/assets/9693fdd9-a7af-4a56-a490-bca77e481162" />
 
 The architecture integrates two clock domains, with dedicated clock-domain crossing (CDC) mechanisms, including data and reset synchronizers and an asynchronous FIFO, to support reliable communication between different clock domains. Clock gating is also incorporated to reduce unnecessary switching activity in the ALU.
 
-The project covers the key stages of the ASIC design flow: RTL design and verification (ModelSim), lint/CDC (SpyGlass), synthesis, DFT scan insertion, and timing analysis (Synopsys Design Compiler), equivalence checking (Formality), PnR (Cadence Innovus), GLS (QuestaSim), and VCD-based power analysis (PrimeTime).
+---
 
 ## 2.ASIC flow
 | Stage | work completed | Files
@@ -19,3 +21,22 @@ The project covers the key stages of the ASIC design flow: RTL design and verifi
 |6.Formal verification| Verify Functionality equivalence by compare RTL to netlist using the Formality tool.|[FM_DFT](./formality_DFT/fm) [FM_SYN](./formality_sythesis/fm)|
 |7.PnR | Floorplan, Power planning, placement, CTS, routing and generate GDS file in Cadence Innovus. |[PNR](./system_pnr)|
 |8.GLS | verify netlist_pnr using RTL testbench then generate VCD file to analysis power in prime time. |[GLS](./GLS)|
+
+---
+
+## 3.Features
+
+| Feature | Description |
+|---|---|
+|**1.Two Master Clocks** | `REF_CLK` = **80 MHz** and `UART_CLK` = **3.6864 MHz** |
+|**2.One DFT Clock** | `scan_CLK` = **100 MHz** |
+|**3.Three Generated Clocks** | `ALU_CLK` = **80 MHz** ,`RX_CLK` = **3.6864 MHz** and `TX_CLK` = **115.2 KHz** |
+|**4.ALU** | Arithmetic, logical, comparison and shift operations |
+|**5.Register File** | 16 × 8-bit registers|
+|**6.UART** | UART_TX , UART_RX|
+|**7.CLK gating** | for reducing power for ALU using ICG cell |
+|**8.Synchronization** | Reset synchronizers, data synchronizer, Async FIFO |
+|**9.Robust RX** | Oversampling, parity / stop-bit / start-glitch detection |
+
+For more details, see the [SpyGlass reports](./spyglass).
+---
