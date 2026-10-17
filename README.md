@@ -10,15 +10,15 @@ The architecture integrates two clock domains, with dedicated clock-domain cross
 
 To Reviewing the completed work : 
 1. Read the [frontend specification](./Specs/Final_System.pdf) and [backend assignment](./Specs/System_Assignment.pdf).
-2. Start with [system_top.v](./RTL/Final%20System/system_top/system_top.v) and [SYS_CTRL.sv](./RTL/Final&20System/SYS_CTRL/SYS_CTRL.sv) to follow the system connections and command sequence.
+2. Start with [system_top.v](./RTL/Final%20System/system_top/system_top.v) and [SYS_CTRL.sv](./RTL/Final%20System/SYS_CTRL/SYS_CTRL.sv) to follow the system connections and command sequence.
 
 ---
 
 ## 2.Implemented flow
 | Stage | work completed | Files
 |---|---|---|
-|1.RTL design | Design (ALU, Register File, Asynchronous FIFO, Clock Divider, Clock Gating, Synchronizers, Controller, UART TX, UART RX).|[RTL](./RTL/Final_System)| 
-|2.verification | Integrate each subsystem into the final system and verify functionality using modelsim.|[TB](./RTL/Final_System/Testbench)|
+|1.RTL design | Design (ALU, Register File, Asynchronous FIFO, Clock Divider, Clock Gating, Synchronizers, Controller, UART TX, UART RX).|[RTL](./RTL/Final%20System)| 
+|2.verification | Integrate each subsystem into the final system and verify functionality using modelsim.|[TB](./RTL/Final%20System/Testbench)|
 |3.lint/CDC | check linting and CDC issues using (lint_rtl,CDC_setup_check,CDC_verify_struct,CDC_verify,rdc_verify_struct).|[SPYGLASS](./spyglass)|
 |4.synthesis |Synthesize and optimize the design, then analyze timing paths, and fix setup and hold violations using Design Compiler tool.|[SYN](./synthesis/syn)|
 |5.DFT | Inserted DFT logic into the design to enhance testability and enable efficient manufacturing test.|[DFT](./DFT/dft)|
