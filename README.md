@@ -46,8 +46,17 @@ To Reviewing the completed work :
 #### For more details for each subsystem specification, see the [System_specs](./Specs).
 ---
 ## 4.output results
+### simulation waveform:
+<img width="1912" height="868" alt="waveform" src="https://github.com/user-attachments/assets/01d62a81-bc3f-41c7-92dc-0e259dd6a490" />
 
-Final routed layout of project : 
+<img width="1905" height="846" alt="waveform_regfile" src="https://github.com/user-attachments/assets/37b99b23-f896-45f2-9729-6492c8466274" />
+
+### Trasncript:
+<img width="1188" height="857" alt="transcript_1" src="https://github.com/user-attachments/assets/d77d990f-2c35-4c2d-bdbb-229d5dccde80" />
+
+<img width="1222" height="682" alt="transcript_2" src="https://github.com/user-attachments/assets/3f49ff3a-1f0e-4884-8f06-2bb1b159bb7a" />
+
+### Final routed layout of project : 
 <img width="961" height="643" alt="Screenshot 2026-10-15 150801" src="https://github.com/user-attachments/assets/4d114446-6087-4193-a880-a5f64af23040" />
 
 These values come from the saved project outputs.
