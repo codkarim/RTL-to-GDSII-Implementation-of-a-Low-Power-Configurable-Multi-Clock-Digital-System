@@ -46,7 +46,7 @@ To Reviewing the completed work :
 #### For more details for each subsystem specification, see the [System_specs](./Specs).
 ---
 ## 4.output results
-### simulation waveform:
+### Simulation waveform:
 <img width="1912" height="868" alt="waveform" src="https://github.com/user-attachments/assets/01d62a81-bc3f-41c7-92dc-0e259dd6a490" />
 
 <img width="1903" height="815" alt="image" src="https://github.com/user-attachments/assets/55810131-8318-4929-b634-0ad894280a2d" />
