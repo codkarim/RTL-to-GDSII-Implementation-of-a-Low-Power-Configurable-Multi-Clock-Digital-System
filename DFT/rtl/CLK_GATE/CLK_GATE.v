@@ -1,0 +1,32 @@
+module CLK_GATE (
+	input      CLK_EN,
+	input      test_EN,
+	input      CLK,
+	output     GATED_CLK);
+
+
+TLATNCAX4M CLK_GATE_U0(
+.E(CLK_EN|test_EN),
+.CK(CLK),
+.ECK(GATED_CLK));
+
+/*
+//internal connections
+reg     Latch_Out ;
+
+ 
+//latch (Level Sensitive Device)
+always @(CLK or CLK_EN)
+ begin
+  if(!CLK)      // active low
+   begin
+    Latch_Out <= CLK_EN ;
+   end
+ end
+ 
+ 
+// ANDING
+assign  GATED_CLK = CLK && Latch_Out ;
+*/
+
+endmodule

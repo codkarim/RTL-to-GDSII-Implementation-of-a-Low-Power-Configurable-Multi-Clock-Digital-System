@@ -1,0 +1,153 @@
+Error: Library Compiler executable path is not set. (PT-063)
+
+                                 PrimeTime (R)
+
+               Version O-2018.06-SP1 for linux64 - Jul 19, 2018 
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+set_app_var power_enable_analysis true
+Information: Checked out license 'PrimePower' (PT-019)
+true
+set_app_var power_analysis_mode time_based
+time_based
+set power_vcd_time_unit 1ns
+1ns
+set report_dir /home/ICer/backend/GLS/pt/report
+/home/ICer/backend/GLS/pt/report
+file mkdir $report_dir
+set Out_report System_pw
+System_pw
+# Tcl variables for SDF and VCD mapping
+set power_vcd_name_mapping true
+true
+set read_sdf_unresolved_argument_verbose true
+true
+set sdf_enable_no_negedge true
+true
+set read_sdf_process_hierarchical_pins true
+true
+# Enable clock propagation across multiplexers
+set_app_var case_analysis_propagate_through_icg true
+true
+set_app_var timing_enable_preset_clear_arcs true
+true
+#------------------------------------------------------------------------------
+# Libraries
+#------------------------------------------------------------------------------
+lappend search_path /home/ICer/backend/GLS/std_cells
+/home/ICer/backend/GLS/std_cells
+set TTLIB   scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+set SSLIB   scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+set FFLIB   scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+set target_library [list $TTLIB $SSLIB $FFLIB]
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+set link_library   [list * $TTLIB $SSLIB $FFLIB]
+* scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+#------------------------------------------------------------------------------
+# Read Design Files
+#------------------------------------------------------------------------------
+# Read Verilog Netlist
+read_verilog /home/ICer/backend/GLS/sim/system_top.v
+1
+current_design system_top
+Information: current_design won't return any data before link (DES-071)
+link_design
+Loading db file '/home/ICer/backend/GLS/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading verilog file '/home/ICer/backend/GLS/sim/system_top.v'
+Loading db file '/home/ICer/backend/GLS/std_cells/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/ICer/backend/GLS/std_cells/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+Linking design system_top...
+Information: Removing 45 unneeded designs..... (LNK-034)
+Information: 482 (77.99%) library cells are unused in library scmetro_tsmc_cl013g_rvt_ss_1p08v_125c..... (LNK-045)
+Information: 618 (100.00%) library cells are unused in library scmetro_tsmc_cl013g_rvt_tt_1p2v_25c..... (LNK-045)
+Information: 618 (100.00%) library cells are unused in library scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c..... (LNK-045)
+Information: total 1718 library cells are unused (LNK-046)
+Design 'system_top' was successfully linked.
+Information: There are 2041 leaf cells, ports, hiers and 3085 nets in the design (LNK-047)
+1
+# Read SDC File
+read_sdc /home/ICer/backend/GLS/sim/top_DFT.sdc
+
+Reading SDC version 2.1...
+Information: Loading library 'scmetro_tsmc_cl013g_rvt_ss_1p08v_125c' data due to accessing lib cells not linked in the current design. (LNK-041)
+Warning: Creating a generated clock on hierarchical pin 'U0_gating_clk/GATED_CLK'. (UITE-136)
+Warning: Creating a generated clock on hierarchical pin 'U0_divider_rx/o_div_clk'. (UITE-136)
+Warning: Creating a generated clock on hierarchical pin 'U0_divider_tx/o_div_clk'. (UITE-136)
+1
+1
+# force Functional Mode for DFT Clock Muxes
+set test_pins [get_ports -quiet {scan_en test_mode SE scan_mode test_en}]
+{"test_mode", "SE"}
+if {[sizeof_collection $test_pins] > 0} {
+    set_case_analysis 0 $test_pins
+}
+1
+# Read SDF File
+read_sdf /home/ICer/backend/GLS/sim/system_top.sdf
+Warning: The SDF file is version 3.0. Current SDF-3.0 supported constructs are: REMOVAL, RECREM, RETAIN and CONDELSE. (SDF-026)
+Error: Net delay from pin 'U0_gating_clk/CLK_GATE_U0/ECK' to pin 'ALU_CLK__L1_I0/A'cannot be annotated because of a timing assertion on hierarchical pin 'U0_gating_clk/GATED_CLK'. (PTE-015)
+Error: Net delay from pin 'U0_divider_rx/U15/Y' to pin 'U0_clk_RX/U1/A'cannot be annotated because of a timing assertion on hierarchical pin 'U0_divider_rx/o_div_clk'. (PTE-015)
+Error: Net delay from pin 'U0_divider_tx/U15/Y' to pin 'U0_clk_TX/U1/A'cannot be annotated because of a timing assertion on hierarchical pin 'U0_divider_tx/o_div_clk'. (PTE-015)
+
+****************************************
+Report : read_sdf /home/ICer/backend/GLS/sim/system_top.sdf
+	-load_delay cell
+	-analysis_type on_chip_variation
+	-min_type sdf_min
+	-max_type sdf_max
+Design : system_top
+Version: O-2018.06-SP1
+Date   : Fri Oct 16 22:56:19 2026
+****************************************
+
+        3 error(s)
+        Number of annotated cell delay arcs :     16728
+        Number of annotated net delay arcs  :      6055
+        Number of annotated timing checks   :      5121
+        Number of annotated constraints     :      1024
+        TEMPERATURE: 125.00 (min)  125.00 (max)
+        VOLTAGE    : 1.08 (min)  1.08 (max)
+        PROCESS    : 1 (min)  1 (max)
+1
+#------------------------------------------------------------------------------
+# Read Switching Activity
+#------------------------------------------------------------------------------
+read_vcd -strip_path system_top_tb/DUT /home/ICer/backend/GLS/sim/VCD/system_top_tb.vcd
+
+======================================================================
+Summary:
+Total number of nets = 2129
+Number of annotated nets = 2129 (100.00%)
+Total number of leaf cells = 1967
+Number of fully annotated leaf cells = 1967 (100.00%)
+======================================================================
+
+1
+update_power
+Warning: Zero transition time will be used at to pins of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-066)
+Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
+Warning: No clock-gating check is inferred for clock UART at pins U0_divider_tx/U15/B and U0_divider_tx/U15/A of cell U0_divider_tx/U15. (PTE-060)
+Warning: No clock-gating check is inferred for clock UART at pins U0_divider_tx/U15/S0 and U0_divider_tx/U15/A of cell U0_divider_tx/U15. (PTE-060)
+Warning: No clock-gating check is inferred for clock UART at pins U0_divider_rx/U15/B and U0_divider_rx/U15/A of cell U0_divider_rx/U15. (PTE-060)
+Warning: No clock-gating check is inferred for clock UART at pins U0_divider_rx/U15/S0 and U0_divider_rx/U15/A of cell U0_divider_rx/U15. (PTE-060)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+Information: Zero transition time used at to pin of annotated arcs. Delays on not annotated delay arcs will be estimated using best available slew.  (PTE-054)
+Information: Expanding clock 'UART' to base period of 8672.000 (old period was 271.000, added 62 edges). (PTE-016)
+Information: Expanding clock 'RX_CLK' to base period of 8672.000 (old period was 271.000, added 62 edges). (PTE-016)
+Information: Running time_based power analysis... (PWR-601)
+Information: The waveform options are:
+		File name:	primetime_px.fsdb
+		File format:	fsdb
+		Time interval:	1ns
+		Hierarchical level:	all
+
+Information: Power analysis is running, please wait ...
+
+ Last event time =     1392 ns  Last event time =     2772 ns  Last event time =     4158 ns  Last event time =     5520 ns  Last event time =     6888 ns  Last event time =     8250 ns  Last event time =     9600 ns  Last event time =    10968 ns  Last event time =    12330 ns  Last event time =    13680 ns  Last event time =    15042 ns  Last event time =    16404 ns  Last event time =    17760 ns  Last event time =    19122 ns  Last event time =    20484 ns  Last event time =    21846 ns  Last event time =    23190 ns  Last event time =    24552 ns  Last event time =    25920 ns  Last event time =    27270 ns  Last event time =    28638 ns  Last event time =    29994 ns  Last event time =    31338 ns  Last event time =    32706 ns  Last event time =    34068 ns  Last event time =    35418 ns  Last event time =    36786 ns  Last event time =    38142 ns  Last event time =    39504 ns  Last event time =    40848 ns  Last event time =    42210 ns  Last event time =    43572 ns  Last event time =    44928 ns  Last event time =    46284 ns  Last event time =    47652 ns  Last event time =    48996 ns  Last event time =    50364 ns  Last event time =    51720 ns  Last event time =    53070 ns  Last event time =    54438 ns  Last event time =    55800 ns  Last event time =    57144 ns  Last event time =    58506 ns  Last event time =    59862 ns  Last event time =    61224 ns  Last event time =    62580 ns  Last event time =    63942 ns  Last event time =    65304 ns  Last event time =    66648 ns  Last event time =    68004 ns  Last event time =    69372 ns  Last event time =    70722 ns  Last event time =    72090 ns  Last event time =    73446 ns  Last event time =    74790 ns  Last event time =    76152 ns  Last event time =    77520 ns  Last event time =    78864 ns  Last event time =    80232 ns  Last event time =    81594 ns  Last event time =    82950 ns  Last event time =    84294 ns  Last event time =    85656 ns  Last event time =    87018 ns  Last event time =    88374 ns  Last event time =    89730 ns  Last event time =    91098 ns  Last event time =    92442 ns  Last event time =    93804 ns  Last event time =    95166 ns  Last event time =    96516 ns  Last event time =    97884 ns  Last event time =    99246 ns  Last event time =   100578 ns  Last event time =   101958 ns  Last event time =   103338 ns  Last event time =   104718 ns  Last event time =   106098 ns  Last event time =   107478 ns  Last event time =   108858 ns  Last event time =   110226 ns  Last event time =   111588 ns  Last event time =   112956 ns  Last event time =   114306 ns  Last event time =   115674 ns  Last event time =   117030 ns  Last event time =   118380 ns  Last event time =   119742 ns  Last event time =   121104 ns  Last event time =   122454 ns  Last event time =   123828 ns  Last event time =   125184 ns  Last event time =   126540 ns  Last event time =   127884 ns  Last event time =   129246 ns  Last event time =   130608 ns  Last event time =   131964 ns  Last event time =   133320 ns  Last event time =   134688 ns  Last event time =   136026 ns  Last event time =   137394 ns  Last event time =   138750 ns  Last event time =   140106 ns  Last event time =   141474 ns  Last event time =   142836 ns  Last event time =   144168 ns  Last event time =   145536 ns  Last event time =   146892 ns  Last event time =   148254 ns  Last event time =   149610 ns  Last event time =   150972 ns  Last event time =   152328 ns  Last event time =   153678 ns  Last event time =   155040 ns  Last event time =   156402 ns  Last event time =   157758 ns  Last event time =   159120 ns  Last event time =   160480 ns  Last event time =   161820 ns  Last event time =   163188 ns  Last event time =   164550 ns  Last event time =   165900 ns  Last event time =   167268 ns  Last event time =   168630 ns  Last event time =   169986 ns  Last event time =   171330 ns  Last event time =   172692 ns  Last event time =   174054 ns  Last event time =   175416 ns  Last event time =   176772 ns  Last event time =   178140 ns  Last event time =   179478 ns  Last event time =   180840 ns  Last event time =   182202 ns  Last event time =   183558 ns  Last event time =   184920 ns  Last event time =   186282 ns  Last event time =   187626 ns  Last event time =   188988 ns  Last event time =   190350 ns  Last event time =   191712 ns  Last event time =   193068 ns  Last event time =   194430 ns  Last event time =   195792 ns  Last event time =   197136 ns  Last event time =   198498 ns  Last event time =   199866 ns  Last event time =   201216 ns  Last event time =   202578 ns  Last event time =   203940 ns  Last event time =   205272 ns  Last event time =   206652 ns  Last event time =   208038 ns  Last event time =   209412 ns  Last event time =   210798 ns  Last event time =   212172 ns  Last event time =   213552 ns  Last event time =   214920 ns  Last event time =   216282 ns  Last event time =   217644 ns  Last event time =   219000 ns  Last event time =   220356 ns  Last event time =   221730 ns  Last event time =   223074 ns  Last event time =   224436 ns  Last event time =   225798 ns  Last event time =   227148 ns  Last event time =   228516 ns  Last event time =   229878 ns  Last event time =   231216 ns  Last event time =   232584 ns  Last event time =   233940 ns  Last event time =   235302 ns  Last event time =   236658 ns  Last event time =   238020 ns  Last event time =   239382 ns  Last event time =   240726 ns  Last event time =   242088 ns  Last event time =   243456 ns  Last event time =   244806 ns  Last event time =   246168 ns  Last event time =   247530 ns  Last event time =   248874 ns  Last event time =   250236 ns  Last event time =   251598 ns  Last event time =   252948 ns  Last event time =   254316 ns  Last event time =   255678 ns  Last event time =   257034 ns  Last event time =   258384 ns  Last event time =   259746 ns  Last event time =   261108 ns  Last event time =   262464 ns  Last event time =   263820 ns  Last event time =   265188 ns  Last event time =   266526 ns  Last event time =   267894 ns  Last event time =   269250 ns  Last event time =   270606 ns  Last event time =   271974 ns  Last event time =   273336 ns  Last event time =   274674 ns  Last event time =   276036 ns  Last event time =   277398 ns  Last event time =   278760 ns  Last event time =   280110 ns  Last event time =   281472 ns  Last event time =   282834 ns  Last event time =   284178 ns  Last event time =   285534 ns  Last event time =   286902 ns  Last event time =   288252 ns  Last event time =   289620 ns  Last event time =   290976 ns  Last event time =   292314 ns  Last event time =   293682 ns  Last event time =   295044 ns  Last event time =   296388 ns  Last event time =   297756 ns  Last event time =   299118 ns  Last event time =   300480 ns  Last event time =   301824 ns  Last event time =   303186 ns  Last event time =   304548 ns  Last event time =   305904 ns  Last event time =   307266 ns  Last event time =   308634 ns  Last event time =   309954 ns  Last event time =   311340 ns  Last event time =   312720 ns  Last event time =   314094 ns  Last event time =   315480 ns  Last event time =   316860 ns  Last event time =   318234 ns  Last event time =   319602 ns  Last event time =   320960 ns  Last event time =   322320 ns  Last event time =   323680 ns  Last event time =   325040 ns  Last event time =   326406 ns  Last event time =   327756 ns  Last event time =   329112 ns  Last event time =   330480 ns  Last event time =   331830 ns  Last event time =   333198 ns  Last event time =   334554 ns  Last event time =   335898 ns  Last event time =   337260 ns  Last event time =   338622 ns  Last event time =   339972 ns  Last event time =   341340 ns  Last event time =   342702 ns  Last event time =   344058 ns  Last event time =   345408 ns  Last event time =   346770 ns  Last event time =   348132 ns  Last event time =   349488 ns 
