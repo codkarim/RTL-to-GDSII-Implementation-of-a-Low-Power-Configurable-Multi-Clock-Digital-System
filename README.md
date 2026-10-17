@@ -14,7 +14,7 @@ To Reviewing the completed work :
 
 ---
 
-## 2.ASIC flow
+## 2.Implemented flow
 | Stage | work completed | Files
 |---|---|---|
 |1.RTL design | Design (ALU, Register File, Asynchronous FIFO, Clock Divider, Clock Gating, Synchronizers, Controller, UART TX, UART RX).|[RTL](./RTL/Final_System)| 
