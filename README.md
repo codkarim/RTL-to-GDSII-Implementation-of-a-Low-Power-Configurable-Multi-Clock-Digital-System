@@ -2,7 +2,7 @@
 ## 1.Project Overview
 This project presents the RTL design and ASIC implementation of a low-power, configurable multi-clock digital communication system using Verilog/System Verilog, targeting TSMC 130nm technology.
 
-The system receives  UART RX commands from master, decodes and executes them using a system controller, and do some operations based on received command such as arithmetic, logical, shift, read and write file operations. The processed results are then transmitted back through a UART TX to master.
+The system receives  UART RX commands from master, decodes and executes them using a system controller, and do some operations based on received command such as arithmetic, logical, shift, read and write operations. The processed results are then transmitted back through a UART TX to master.
 
 <img width="1224" height="787" alt="image" src="https://github.com/user-attachments/assets/9693fdd9-a7af-4a56-a490-bca77e481162" />
 
