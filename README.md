@@ -43,6 +43,9 @@ The architecture integrates two clock domains, with dedicated clock-domain cross
 ---
 ## 4.output results
 
+Final routed layout of project : 
+<img width="961" height="643" alt="Screenshot 2026-10-15 150801" src="https://github.com/user-attachments/assets/4d114446-6087-4193-a880-a5f64af23040" />
+
 These values come from the saved project outputs.
 
 | Item | Output result | Output |
@@ -58,9 +61,12 @@ These values come from the saved project outputs.
 | Post-route setup WNS | +0.183 ns with 0 setup violations | [Setup summary](./system_pnr/report/system_top_postRoute.summary) |
 | Post-route hold WNS | +0.073 ns with 0 hold violations | [Hold summary](./system_pnr/report/system_top_postRoute_hold.summaryl) |
 | Successful functional checks | tesetd successfully default configurations (prescale =32, enable parity which is even ) | [Simulation transcript](./GLS/sim/transcript.png) |
-| total power using VCD | 700 µW annotated nets = 2129 (100.00%)| [PrimeTime PX report](./GLS/pt/report/SYS_TOP_pw.rpt) |
+| total power using VCD | 700 µW with annotated nets = 2129 (100.00%)| [PrimeTime PX report](./GLS/pt/report/SYS_TOP_pw.rpt) |
 
 **Power note:** VCD mapping annotated nets = 2129 (100.00%) and Number of fully annotated leaf cells = 1967 (100.00%), 
 See the [activity log](./GLS/pt/pw.log).
+
+---
+
 
 ---
