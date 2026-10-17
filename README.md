@@ -8,6 +8,10 @@ The system receives  UART RX commands from master, decodes and executes them usi
 
 The architecture integrates two clock domains, with dedicated clock-domain crossing (CDC) mechanisms, including data and reset synchronizers and an asynchronous FIFO, to support reliable communication between different clock domains. Clock gating is also incorporated to reduce unnecessary switching activity in the ALU.
 
+To Reviewing the completed work : 
+1. Read the [frontend specification](./Specs/Final_System.pdf) and [backend assignment](./Specs/System_Assignment.pdf).
+2. Start with [SYS_TOP.v](./RTL/Final_System/system_top/system_top.v) and [sys_ctrl.sv](./RTL/Final_System/SYS_CTRL/SYS_CTRL.sv) to follow the system connections and command sequence.
+
 ---
 
 ## 2.ASIC flow
@@ -66,7 +70,14 @@ These values come from the saved project outputs.
 **Power note:** VCD mapping annotated nets = 2129 (100.00%) and Number of fully annotated leaf cells = 1967 (100.00%), 
 See the [activity log](./GLS/pt/pw.log).
 
----
 
+[PNR export](./system_pnr/export) contains all files exported from PnR in Cadence Innovus, including the post-route netlist, SDF, SDC, SPF, and GDSII layout.
+
+---
+## Author
+
+**karim mohamed Abomera**
+
+Faculty of Engineering, Kafr El-Sheikh University 
 
 ---
