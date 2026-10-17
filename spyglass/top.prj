@@ -1,0 +1,54 @@
+#!SPYGLASS_PROJECT_FILE
+#!VERSION 3.0
+#  -------------------------------------------------------------------
+#  This is a software generated project file. Manual edits to this file could be lost during the next save operation
+#  Copyright Synopsys Inc.
+#  Last Updated By: SpyGlass SpyGlass_vL-2016.06
+#  Last Updated On Wed Oct 14 17:19:36 2026
+#
+#  -------------------------------------------------------------------
+
+##Data Import Section
+
+read_file -type sourcelist ../rtl/rtl.f
+read_file -type gateslib ../std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.lib
+read_file -type gateslib ../std_cells/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.lib
+read_file -type gateslib ../std_cells/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.lib
+read_file -type sgdc system.sgdc
+
+##Common Options Section
+
+set_option projectwdir .
+set_option language_mode mixed
+set_option designread_enable_synthesis yes
+set_option designread_disable_flatten no
+set_option enableSV yes
+set_option active_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+set_option sdc2sgdc yes
+
+
+##Goal Setup Section
+
+current_methodology $SPYGLASS_HOME/GuideWare/latest/block/rtl_handoff
+
+
+current_goal lint/lint_rtl -alltop
+read_file -type awl ./spyglass-1/lint/lint_rtl/spyglass-1_waiver_file.awl
+set_goal_option addrules { UnloadedOutTerm-ML }
+set_goal_option default_waiver_file ./spyglass-1/lint/lint_rtl/spyglass-1_waiver_file.awl
+
+
+current_goal cdc/cdc_setup_check -alltop
+set_parameter enable_generated_clocks yes
+
+
+current_goal cdc/clock_reset_integrity -alltop
+read_file -type awl ./spyglass-1/cdc/clock_reset_integrity/spyglass-1_waiver_file.awl
+set_goal_option default_waiver_file ./spyglass-1/cdc/clock_reset_integrity/spyglass-1_waiver_file.awl
+set_parameter enable_generated_clocks yes
+
+
+current_goal cdc/cdc_verify -alltop
+read_file -type awl ./spyglass-1/cdc/cdc_verify/spyglass-1_waiver_file.awl
+set_goal_option default_waiver_file ./spyglass-1/cdc/cdc_verify/spyglass-1_waiver_file.awl
+

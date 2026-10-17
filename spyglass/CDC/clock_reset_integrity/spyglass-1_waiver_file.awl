@@ -1,0 +1,2 @@
+waive -msg {Flop system_top.U0_divider_tx.div_clk and Flop system_top.U0_regfile.memory[3][1] are converging through combinational logic to clock of Flop system_top.TX_OUT}  -rule {  {Clock_glitch04}  }  -comment {Created by ICer on 14-Oct-2026 02:07:08}  -exact 
+waive -msg {Flop system_top.U0_divider_rx.div_clk and Flop system_top.U0_regfile.memory[2][3] are converging through combinational logic to clock of Flop store[0]}  -rule {  {Clock_glitch04}  }  -comment {Created by ICer on 14-Oct-2026 02:07:52}  -exact 

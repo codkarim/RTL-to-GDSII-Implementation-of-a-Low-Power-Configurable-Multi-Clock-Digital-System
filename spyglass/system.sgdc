@@ -1,0 +1,73 @@
+
+current_design system_top
+
+sdc_data -file ./top_netlist.sdc
+
+####################################################################################
+                  #### Section 1 : Clock Definition ####
+####################################################################################
+###-------------------------------------DOMAIN 0---------------------------------### 
+#REF_CLK period = 12.5 ns with clock domain d0
+#clock -name REF_CLK -period 12.5 -waveform {0 6.25} -domain d0
+
+#ALU_CLK period = 12.5 ns with clock domain d0
+#clock -name system_top.ALU_CLK -period 12.5 -waveform {0 6.25} -domain d0
+
+###-------------------------------------DOMAIN 1---------------------------------### 
+#UART_CLK period = 271 ns with clock domain d1
+#clock -name UART_CLK -period 271 -waveform {0 135.5} -domain d1
+
+#UART_CLK period = 271 ns with clock domain d1
+#clock -name system_top.U0_UART.RX_CLK -period 271 -waveform {0 135.5} -domain d1 -tag RX_CLK
+
+#UART_CLK period = 8680 ns with clock domain d1
+#clock -name system_top.U0_UART.TX_CLK -period 8680 -waveform {0 4340} -domain d1 -tag TX_CLK
+
+###--------------------------------Vertual Clock---------------------------------### 
+#create virtual clock
+clock -period 12.5 -waveform {0 6.25} -domain rst_domain -tag rst_n
+####################################################################################
+                  #### Section 2 : Reset Definition ####
+####################################################################################
+
+reset -name RST -value 0 -async
+
+####################################################################################
+             #### Section 3 : set input/output clock domains  ####
+####################################################################################
+
+#abstract_port -ports RX_IN  -clock system_top.U0_UART.RX_CLK
+
+#assign virtual clock to RST
+abstract_port -ports RST    -clock rst_n 
+####################################################################################
+             #### Section 4 : Quasi static signals  ####
+####################################################################################
+
+quasi_static -name system_top.UART_config
+quasi_static -name system_top.DIV_RATIO
+
+####################################################################################
+             #### Section 5 : set_case_analysis  ####
+####################################################################################
+
+set_case_analysis -name system_top.U0_divider_rx.i_clk_en    	-value 1
+
+set_case_analysis -name system_top.U0_divider_tx.i_clk_en       -value 1
+
+####################################################################################
+             #### Section 6 : DATA/RESET Synchronizers  ####
+####################################################################################
+
+reset_synchronizer -name U0_rst_1.SYNC_RST
+reset_synchronizer -name U0_rst_2.SYNC_RST
+
+sync_cell -name DF_SYNC
+
+####################################################################################
+             #### Section 7 : Constraints  ####
+####################################################################################
+cdc_attribute -unrelated  {system_top.U0_ASYNC_FIFO.U0_SYNC_r2w.Async system_top.U0_DATA_SYN.bus_enable}
+cdc_attribute -unrelated  {system_top.U0_ASYNC_FIFO.U0_SYNC_w2r.Async system_top.U0_ASYNC_FIFO.U0_SYNC_w2r.sync}
+
+cdc_false_path -from system_top.U0_ASYNC_FIFO.U0_memory.memory -from_type data -to system_top.U0_UART.U0_tx.U0_SER.Regester -to_type data
