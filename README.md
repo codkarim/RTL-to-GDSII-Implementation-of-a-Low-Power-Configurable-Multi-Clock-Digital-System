@@ -10,7 +10,7 @@ The architecture integrates two clock domains, with dedicated clock-domain cross
 
 To Reviewing the completed work : 
 1. Read the [frontend specification](./Specs/Final_System.pdf) and [backend assignment](./Specs/System_Assignment.pdf).
-2. Start with [system_top.v](./RTL/Final_System/system_top/system_top.v) and [SYS_CTRL.sv](./RTL/Final_System/SYS_CTRL/SYS_CTRL.sv) to follow the system connections and command sequence.
+2. Start with [system_top.v](./RTL/Final%20System/system_top/system_top.v) and [SYS_CTRL.sv](./RTL/Final&20System/SYS_CTRL/SYS_CTRL.sv) to follow the system connections and command sequence.
 
 ---
 
