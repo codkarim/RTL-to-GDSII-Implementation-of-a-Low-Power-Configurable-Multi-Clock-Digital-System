@@ -6,7 +6,7 @@ The system receives  UART RX commands from master, decodes and executes them usi
 
 <img width="1224" height="787" alt="image" src="https://github.com/user-attachments/assets/9693fdd9-a7af-4a56-a490-bca77e481162" />
 
-The architecture integrates two clock domains, with dedicated clock-domain crossing (CDC) mechanisms, including data and reset synchronizers and an asynchronous FIFO, to support reliable communication between different clock domains. Clock gating is also incorporated to reduce unnecessary switching activity in the ALU.
+The architecture integrates two clock domains(REF_CLK, UART_CLK), with dedicated clock-domain crossing (CDC) mechanisms, including data and reset synchronizers and an asynchronous FIFO, to support reliable communication between different clock domains. Clock gating is also incorporated to reduce unnecessary switching activity in the ALU.
 
 To Reviewing the completed work : 
 1. Read the [frontend specification](./Specs/Final_System.pdf) and [backend assignment](./Specs/System_Assignment.pdf).
