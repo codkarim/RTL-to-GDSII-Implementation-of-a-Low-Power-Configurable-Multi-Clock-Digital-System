@@ -1,0 +1,380 @@
+
+                                 Formality (R)
+
+               Version L-2016.03-SP1 for linux64 - Apr 13, 2016 
+
+                    Copyright (c) 1988 - 2016 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+  ** Highlights of Formality (R) Version L-2016.03 **
+   - New alternate verification strategies for resolving inconclusive verifications
+   - Automation for deploying alternate strategies
+   - New command to export the mapping of reference to implementation registers
+   - New capability to combine PG and low power information from db libraries with Verilog functional models
+
+   * Please refer to the Formality Release Notes for details and additional enhancements
+
+Build: 4031317
+Hostname: IC_EDA (RHEL64)
+Current time: Wed Oct 14 19:53:37 2026
+
+Loading db file '/home/synopsys/Formality2016/libraries/syn/gtech.db'
+########################### Define Top Module ############################
+set top_module system_top
+system_top
+######################## Output Directories Setup ############################
+file mkdir reports
+set REPORTS_FOLDER  reports
+reports
+###################################################################
+########################### Setup Paths #############################
+###################################################################
+set project_path /home/ICer/backend/formality_synthesis
+/home/ICer/backend/formality_synthesis
+# Add paths to search path
+lappend search_path $project_path/std_cells
+/home/ICer/backend/formality_synthesis/std_cells
+lappend search_path $project_path/rtl/ALU
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU
+lappend search_path $project_path/rtl/ASYNC_FIFO
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO
+lappend search_path $project_path/rtl/ClkDiv
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv
+lappend search_path $project_path/rtl/clk_div_mux
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux
+lappend search_path $project_path/rtl/CLK_GATE
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE
+lappend search_path $project_path/rtl/DATA_SYN
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN
+lappend search_path $project_path/rtl/PULSE_GEN
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN
+lappend search_path $project_path/rtl/regfile
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile
+lappend search_path $project_path/rtl/RST_SYNC
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC
+lappend search_path $project_path/rtl/SYS_CTRL
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC /home/ICer/backend/formality_synthesis/rtl/SYS_CTRL
+lappend search_path $project_path/rtl/system_top
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC /home/ICer/backend/formality_synthesis/rtl/SYS_CTRL /home/ICer/backend/formality_synthesis/rtl/system_top
+lappend search_path $project_path/rtl/UART/UART_RX
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC /home/ICer/backend/formality_synthesis/rtl/SYS_CTRL /home/ICer/backend/formality_synthesis/rtl/system_top /home/ICer/backend/formality_synthesis/rtl/UART/UART_RX
+lappend search_path $project_path/rtl/UART/UART_TX
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC /home/ICer/backend/formality_synthesis/rtl/SYS_CTRL /home/ICer/backend/formality_synthesis/rtl/system_top /home/ICer/backend/formality_synthesis/rtl/UART/UART_RX /home/ICer/backend/formality_synthesis/rtl/UART/UART_TX
+lappend search_path $project_path/rtl/UART/UART_TOP
+/home/ICer/backend/formality_synthesis/std_cells /home/ICer/backend/formality_synthesis/rtl/ALU /home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO /home/ICer/backend/formality_synthesis/rtl/ClkDiv /home/ICer/backend/formality_synthesis/rtl/clk_div_mux /home/ICer/backend/formality_synthesis/rtl/CLK_GATE /home/ICer/backend/formality_synthesis/rtl/DATA_SYN /home/ICer/backend/formality_synthesis/rtl/PULSE_GEN /home/ICer/backend/formality_synthesis/rtl/regfile /home/ICer/backend/formality_synthesis/rtl/RST_SYNC /home/ICer/backend/formality_synthesis/rtl/SYS_CTRL /home/ICer/backend/formality_synthesis/rtl/system_top /home/ICer/backend/formality_synthesis/rtl/UART/UART_RX /home/ICer/backend/formality_synthesis/rtl/UART/UART_TX /home/ICer/backend/formality_synthesis/rtl/UART/UART_TOP
+set SSLIB "scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db"
+scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db
+set TTLIB "scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db"
+scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db
+set FFLIB "scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db"
+scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db
+###################################################################
+############################ Guidance #############################
+###################################################################
+# Synopsys setup variable
+set synopsys_auto_setup true
+true
+# Formality Setup File
+set_svf "../syn/$top_module.svf"
+SVF set to '../syn/system_top.svf'.
+1
+###################################################################
+###################### Reference Container ########################
+###################################################################
+# Read Reference Design Files
+read_verilog  -container Ref system_top.v
+No target library specified, default is WORK
+Initializing DesignWare ...
+Initialization Complete
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/system_top/system_top.v'
+Created container 'Ref'
+Current container set to 'Ref'
+1
+read_verilog  -container Ref ALU.v
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ALU/ALU.v'
+1
+read_verilog  -container Ref regfile.v
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/regfile/regfile.v'
+1
+read_verilog  -container Ref {ASYNC_FIFO.v DF_SYNC.v FIFO_MEM_CNTRL.v FIFO_RD.v FIFO_WR.v}
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO/ASYNC_FIFO.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO/DF_SYNC.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO/FIFO_MEM_CNTRL.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO/FIFO_RD.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ASYNC_FIFO/FIFO_WR.v'
+1
+read_verilog  -container Ref {ClkDiv.v clk_div_mux.v CLK_GATE.v}
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/ClkDiv/ClkDiv.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/clk_div_mux/clk_div_mux.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/CLK_GATE/CLK_GATE.v'
+1
+read_verilog  -container Ref {DATA_SYN.v PULSE_GEN.v RST_SYNC.v}
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/DATA_SYN/DATA_SYN.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/PULSE_GEN/PULSE_GEN.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/RST_SYNC/RST_SYNC.v'
+1
+read_verilog  -container Ref UART.v
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TOP/UART.v'
+1
+read_verilog  -container Ref {MUX_4x1.v parity_calc.v Serializer.v UART_TX.v  }
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TX/MUX_4x1.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TX/parity_calc.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TX/Serializer.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TX/UART_TX.v'
+1
+read_sverilog -container Ref FSM.sv
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_TX/FSM.sv'
+1
+read_verilog  -container Ref {data_sampling.v deserializer.v edge_bit_counter.v par_check.v start_check.v stop_check.v UART_RX.v}
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/data_sampling.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/deserializer.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/edge_bit_counter.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/par_check.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/start_check.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/stop_check.v'
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/UART_RX.v'
+1
+read_sverilog -container Ref FSM_RX.sv
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/UART/UART_RX/FSM_RX.sv'
+1
+read_sverilog -container Ref SYS_CTRL.sv
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/rtl/SYS_CTRL/SYS_CTRL.sv'
+1
+# Read Reference technology libraries
+read_db -container Ref [list $SSLIB $TTLIB $FFLIB]
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+1
+# set the top Reference Design 
+set_reference_design $top_module
+Reference design set to 'Ref:/WORK/system_top'
+1
+set_top $top_module
+Setting top design to 'Ref:/WORK/system_top'
+Status:   Elaborating design system_top   ...  
+Status:   Elaborating design regfile  ADDR_WIDTH=4, MEM_DEPTH=16, MEM_WIDTH=8 ...  
+Information: Created design named 'regfile_ADDR_WIDTH4_MEM_DEPTH16_MEM_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design ASYNC_FIFO  DATA_WIDTH=8 ...  
+Information: Created design named 'ASYNC_FIFO_DATA_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design FIFO_MEM_CNTRL  DATA_WIDTH=8, mem_depth=8 ...  
+Information: Created design named 'FIFO_MEM_CNTRL_DATA_WIDTH8_mem_depth8'. (FE-LINK-13)
+Status:   Elaborating design DF_SYNC  BUS_WIDTH=4 ...  
+Information: Created design named 'DF_SYNC_BUS_WIDTH4'. (FE-LINK-13)
+Status:   Elaborating design FIFO_WR  address=4 ...  
+Information: Created design named 'FIFO_WR_address4'. (FE-LINK-13)
+Status:   Elaborating design FIFO_RD  address=4 ...  
+Information: Created design named 'FIFO_RD_address4'. (FE-LINK-13)
+Status:   Elaborating design DATA_SYN  BUS_WIDTH=8 ...  
+Information: Created design named 'DATA_SYN_BUS_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design ALU  op_width=8, out_width=16, func_width=4 ...  
+Information: Created design named 'ALU_op_width8_out_width16_func_width4'. (FE-LINK-13)
+Status:   Elaborating design UART  DATA_WIDTH=8, scale_size=6 ...  
+Information: Created design named 'UART_DATA_WIDTH8_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design UART_RX  scale_size=6, DATA_WIDTH=8 ...  
+Information: Created design named 'UART_RX_scale_size6_DATA_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design data_sampling  scale_size=6, count_num=6 ...  
+Information: Created design named 'data_sampling_scale_size6_count_num6'. (FE-LINK-13)
+Status:   Elaborating design stop_check   ...  
+Status:   Elaborating design start_check   ...  
+Status:   Elaborating design par_check  DATA_WIDTH=8, count_num=6, scale_size=6 ...  
+Information: Created design named 'par_check_DATA_WIDTH8_count_num6_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design deserializer  DATA_WIDTH=8, count_num=6, scale_size=6 ...  
+Information: Created design named 'deserializer_DATA_WIDTH8_count_num6_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design edge_bit_counter  count_num=6, scale_size=6 ...  
+Information: Created design named 'edge_bit_counter_count_num6_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design FSM_RX  count_num=6, scale_size=6 ...  
+Information: Created design named 'FSM_RX_count_num6_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design UART_TX  DATA_WIDTH=8 ...  
+Information: Created design named 'UART_TX_DATA_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design MUX_4x1   ...  
+Status:   Elaborating design parity_calc  DATA_WIDTH=8 ...  
+Information: Created design named 'parity_calc_DATA_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design Serializer  DATA_WIDTH=8 ...  
+Information: Created design named 'Serializer_DATA_WIDTH8'. (FE-LINK-13)
+Status:   Elaborating design FSM   ...  
+Status:   Elaborating design CLK_GATE   ...  
+Status:   Elaborating design RST_SYNC   ...  
+Status:   Elaborating design PULSE_GEN   ...  
+Status:   Elaborating design ClkDiv  divide_ratio=8 ...  
+Information: Created design named 'ClkDiv_divide_ratio8'. (FE-LINK-13)
+Status:   Elaborating design clk_div_mux  divide_ratio=8, scale_size=6 ...  
+Information: Created design named 'clk_div_mux_divide_ratio8_scale_size6'. (FE-LINK-13)
+Status:   Elaborating design SYS_CTRL  ALU_width=16, func_WIDTH=4, addr_width=4, DATA_WIDTH=8 ...  
+Information: Created design named 'SYS_CTRL_ALU_width16_func_WIDTH4_addr_width4_DATA_WIDTH8'. (FE-LINK-13)
+Status:  Implementing inferred operators...
+
+************ Library Checking Summary ************
+Warning:  3 unlinked power cell(s) with unread pg pins.
+        Use 'report_libraries -defects all' for more details.
+**************************************************
+
+Top design successfully set to 'Ref:/WORK/system_top'
+Reference design set to 'Ref:/WORK/system_top'
+1
+###################################################################
+#################### Implementation Container #####################
+###################################################################
+# Read Implementation Design Files
+read_verilog -netlist -container Imp "../syn/results/top_netlist.v" 
+No target library specified, default is WORK
+Loading verilog file '/home/ICer/backend/formality_synthesis/syn/results/top_netlist.v'
+Created container 'Imp'
+Current container set to 'Imp'
+1
+# Read Implementation technology libraries
+read_db -container Imp [list $SSLIB $TTLIB $FFLIB]
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_ss_1p08v_125c.db'
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_tt_1p2v_25c.db'
+Loading db file '/home/ICer/backend/formality_synthesis/std_cells/scmetro_tsmc_cl013g_rvt_ff_1p32v_m40c.db'
+1
+# set the top Implementation Design
+set_implementation_design $top_module
+Implementation design set to 'Imp:/WORK/system_top'
+1
+set_top $top_module
+Setting top design to 'Imp:/WORK/system_top'
+Status:  Implementing inferred operators...
+
+************ Library Checking Summary ************
+Warning:  3 unlinked power cell(s) with unread pg pins.
+        Use 'report_libraries -defects all' for more details.
+**************************************************
+
+Top design successfully set to 'Imp:/WORK/system_top'
+Implementation design set to 'Imp:/WORK/system_top'
+1
+###################### Matching Compare points ####################
+match
+Reference design is 'Ref:/WORK/system_top'
+Implementation design is 'Imp:/WORK/system_top'
+Status:  Checking designs...
+    Warning: 0 (12) undriven nets found in reference (implementation) design; see formality.log for list (FM-399)
+Status:  Building verification models...
+Status:  Processing Guide Commands...
+
+***************************** Guidance Summary *****************************
+                                         Status
+Command                 Accepted   Rejected  Unsupported  Unprocessed  Total
+----------------------------------------------------------------------------
+environment         :          2          0          0          0          2
+instance_map        :         28          0          0          0         28
+mark                :         26          0          0          0         26
+multiplier          :          2          0          0          0          2
+transformation
+   map              :         26          0          0          0         26
+   share            :          4          0          0          0          4
+uniquify            :          2          2          0          0          4
+
+Note: If verification succeeds you can safely ignore unaccepted guidance commands.
+
+SVF files read:
+      ../syn/system_top.svf
+
+SVF files produced:
+  /home/ICer/backend/formality_synthesis/fm/formality_svf/
+    svf.txt
+****************************************************************************
+
+Status:  Matching...
+    
+*********************************** Matching Results ***********************************    
+ 345 Compare points matched by name    
+ 0 Compare points matched by signature analysis    
+ 0 Compare points matched by topology    
+ 4 Matched primary inputs, black-box outputs    
+ 0(0) Unmatched reference(implementation) compare points    
+ 0(0) Unmatched reference(implementation) primary inputs, black-box outputs    
+****************************************************************************************
+
+1
+######################### Run Verification ########################
+set successful [verify]
+Reference design is 'Ref:/WORK/system_top'
+Implementation design is 'Imp:/WORK/system_top'
+    
+*********************************** Matching Results ***********************************    
+ 345 Compare points matched by name    
+ 0 Compare points matched by signature analysis    
+ 0 Compare points matched by topology    
+ 4 Matched primary inputs, black-box outputs    
+ 0(0) Unmatched reference(implementation) compare points    
+ 0(0) Unmatched reference(implementation) primary inputs, black-box outputs    
+****************************************************************************************
+
+Status:  Verifying...
+
+***************************** Synopsys Auto Setup Summary ******************************
+
+!!! Synopsys Auto Setup Mode was enabled. !!!
+!!! Verification results are valid assuming the following setup constraints: !!!
+
+### RTL Interpretation Setup
+   set hdlin_ignore_parallel_case false
+   set hdlin_ignore_full_case false
+   set hdlin_error_on_mismatch_message false
+   set hdlin_ignore_embedded_configuration true
+
+### Undriven Signal Handling Setup
+   set verification_set_undriven_signals synthesis
+
+### Test Logic Setup
+   set verification_verify_directly_undriven_output false
+   For details see report_dont_verify_points and report_constants
+
+
+For further details on Synopsys Auto Setup Mode: Type man synopsys_auto_setup
+****************************************************************************************
+
+
+********************************* Verification Results *********************************
+Verification SUCCEEDED
+   ATTENTION: synopsys_auto_setup mode was enabled.
+              See Synopsys Auto Setup Summary for details.
+----------------------------------------------------------
+ Reference design: Ref:/WORK/system_top
+ Implementation design: Imp:/WORK/system_top
+ 345 Passing compare points
+----------------------------------------------------------------------------------------
+Matched Compare Points     BBPin    Loop   BBNet     Cut    Port     DFF     LAT   TOTAL
+----------------------------------------------------------------------------------------
+Passing (equivalent)           0       0       0       0       3     341       1     345
+Failing (not equivalent)       0       0       0       0       0       0       0       0
+****************************************************************************************
+1
+if {!$successful} {
+diagnose
+analyze_points -failing
+}
+########################### Reporting #############################
+report_passing_points > $REPORTS_FOLDER/passing_points.rpt
+report_failing_points > $REPORTS_FOLDER/failing_points.rpt
+report_aborted_points > $REPORTS_FOLDER/aborted_points.rpt
+report_unverified_points > $REPORTS_FOLDER/unverified_points.rpt
+################# starting graphical user interface #######################
+start_gui
+     1  source -echo -verbose fm_script.tcl
+1
+###########################################################################
+fm_shell (verify)> exit
+
+Maximum memory usage for this session: 478560 KB
+CPU usage for this session: 12.59 seconds
+Current time: Wed Oct 14 19:58:47 2026
+Elapsed time: 311 seconds
+
+Thank you for using Formality (R)!
