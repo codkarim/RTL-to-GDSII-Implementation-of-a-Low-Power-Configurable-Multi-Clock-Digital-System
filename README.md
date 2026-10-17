@@ -49,6 +49,8 @@ To Reviewing the completed work :
 ### simulation waveform:
 <img width="1912" height="868" alt="waveform" src="https://github.com/user-attachments/assets/01d62a81-bc3f-41c7-92dc-0e259dd6a490" />
 
+<img width="1903" height="815" alt="image" src="https://github.com/user-attachments/assets/55810131-8318-4929-b634-0ad894280a2d" />
+
 <img width="1905" height="846" alt="waveform_regfile" src="https://github.com/user-attachments/assets/37b99b23-f896-45f2-9729-6492c8466274" />
 
 ### Trasncript:
@@ -57,6 +59,8 @@ To Reviewing the completed work :
 <img width="1222" height="682" alt="transcript_2" src="https://github.com/user-attachments/assets/3f49ff3a-1f0e-4884-8f06-2bb1b159bb7a" />
 
 ### Final routed layout of project : 
+<img width="967" height="656" alt="Screenshot 2026-10-15 150940" src="https://github.com/user-attachments/assets/3377a561-eba1-4e65-a8ce-ab11322a8c91" />
+
 <img width="961" height="643" alt="Screenshot 2026-10-15 150801" src="https://github.com/user-attachments/assets/4d114446-6087-4193-a880-a5f64af23040" />
 
 These values come from the saved project outputs.
