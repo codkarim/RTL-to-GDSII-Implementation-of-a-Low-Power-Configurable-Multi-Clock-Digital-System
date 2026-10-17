@@ -31,12 +31,36 @@ The architecture integrates two clock domains, with dedicated clock-domain cross
 |**1.Two Master Clocks** | `REF_CLK` = **80 MHz** and `UART_CLK` = **3.6864 MHz** |
 |**2.One DFT Clock** | `scan_CLK` = **100 MHz** |
 |**3.Three Generated Clocks** | `ALU_CLK` = **80 MHz** ,`RX_CLK` = **3.6864 MHz** and `TX_CLK` = **115.2 KHz** |
-|**4.ALU** | Arithmetic, logical, comparison and shift operations |
+|**4.ALU** | Arithmetic, logical, comparison and shift operations with result = 16-bit |
 |**5.Register File** | 16 × 8-bit registers|
 |**6.UART** | UART_TX , UART_RX|
 |**7.CLK gating** | for reducing power for ALU using ICG cell |
-|**8.Synchronization** | Reset synchronizers, data synchronizer, Async FIFO |
-|**9.Robust RX** | Oversampling, parity / stop-bit / start-glitch detection |
+|**8.Synchronizers** | Reset synchronizers, data synchronizer, Async FIFO (8 x 8) |
+|**9.Uart configurations** | prescale (32,16,8), parity(odd,even,disable) |
+|**10.Num of scan chains** | four scan chains |
 
-For more details, see the [SpyGlass reports](./spyglass).
+#### For more details for each subsystem specification, see the [System_specs](./Specs).
+---
+## 4.output results
+
+These values come from the saved project outputs.
+
+| Item | Output result | Output |
+|---|---|---|
+| spyglass goals | lint_rtl,CDC_setup_check,CDC_verify_struct,CDC_verify,rdc_verify_struct (with zero errors) | [Synthesis area report](./spyglass)|
+| Synthesized cell area | 24576.56 µm²| [Synthesis area report](./synthesis/syn/reports/area.rpt) |
+| DFT cell area | 24227.076951 µm²| [DFT area report](./DFT/dft/reports/area.rpt) |
+| Die size area | 240.47 x 160.47 µm| [Die size area](./system_pnr/floorplan.tcl) |
+| Scan chains | 86, 85, 85, and 85 elements; four scan chains | [scan chains](./DFT/dft/dft.log) |
+| test coverage | 99.58% | [test coverage](./DFT/dft/reports/dft_drc_post_dft.rpt) |
+| Post-synthesis equivalence | SUCCEEDED; 345 passing points with no failing points | [Formality log](./formality_synthesis/fm/reports) |
+| Post-DFT equivalence | SUCCEEDED; 345 passing points with no failing points | [Formality log](./formality_DFT/fm/reports) |
+| Post-route setup WNS | +0.183 ns with 0 setup violations | [Setup summary](./system_pnr/report/system_top_postRoute.summary) |
+| Post-route hold WNS | +0.073 ns with 0 hold violations | [Hold summary](./system_pnr/report/system_top_postRoute_hold.summaryl) |
+| Successful functional checks | tesetd successfully default configurations (prescale =32, enable parity which is even ) | [Simulation transcript](./GLS/sim/transcript.png) |
+| total power using VCD | 700 µW annotated nets = 2129 (100.00%)| [PrimeTime PX report](./GLS/pt/report/SYS_TOP_pw.rpt) |
+
+**Power note:** VCD mapping annotated nets = 2129 (100.00%) and Number of fully annotated leaf cells = 1967 (100.00%), 
+See the [activity log](./GLS/pt/pw.log).
+
 ---
