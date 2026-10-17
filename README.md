@@ -68,7 +68,6 @@ These values come from the saved project outputs.
 | Item | Output result | Output |
 |---|---|---|
 | spyglass goals | lint_rtl,CDC_setup_check,CDC_verify_struct,CDC_verify,rdc_verify_struct (with zero errors) | [Synthesis area report](./spyglass)|
-| Synthesized cell area | 24576.56 µm²| [Synthesis area report](./synthesis/syn/reports/area.rpt) |
 | DFT cell area | 24227.076951 µm²| [DFT area report](./DFT/dft/reports/area.rpt) |
 | Die size area | 240.47 x 160.47 µm| [Die size area](./system_pnr/floorplan.tcl) |
 | Scan chains | 86, 85, 85, and 85 elements; four scan chains | [scan chains](./DFT/dft/dft.log) |
