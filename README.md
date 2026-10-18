@@ -76,7 +76,7 @@ These values come from the saved project outputs.
 | Post-DFT equivalence | SUCCEEDED; 345 passing points with no failing points | [Formality log](./formality_DFT/fm/reports) |
 | Post-route setup WNS | +0.183 ns with 0 setup violations | [Setup summary](./system_pnr/report/system_top_postRoute.summary) |
 | Post-route hold WNS | +0.073 ns with 0 hold violations | [Hold summary](./system_pnr/report/system_top_postRoute_hold.summary) |
-| Successful functional checks | tesetd successfully default configurations (prescale =32, enable parity which is even ) | [Simulation transcript](./GLS/sim/Transcript.png) |
+| GLS Post PnR | tested successfully default configurations (prescale =32, enable parity which is even ) | [Simulation transcript](./GLS/sim/Transcript.png) |
 | total power using VCD | 700 µW with annotated nets = 2129 (100.00%)| [PrimeTime PX report](./GLS/pt/report/System_pw.rpt) |
 
 **Power note:** VCD mapping annotated nets = 2129 (100.00%) and Number of fully annotated leaf cells = 1967 (100.00%), 
